@@ -1,0 +1,12 @@
+<h1>Lines Index</h1>
+
+<ul class="list-unstyled">
+  <% @lines.each do |line| %>
+    <li><%= link_to line.name, line_path(line) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add New Line", new_line_path, :class => "btn btn-primary" %>
+<br>
+<br>
+<%= link_to "Go to all stations list!", stations_path %>

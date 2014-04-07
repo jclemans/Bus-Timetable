@@ -1,0 +1,32 @@
+<h2><%= @line.name %></h2>
+
+<p><%= link_to "Edit", edit_line_path(@line), :class => "btn btn-default" %></p>
+<p><%= link_to "Delete", line_path(@line),
+                         :confirm => "You sure?",
+                         :method => "delete",
+                         :class => "btn btn-danger" %></p>
+
+
+
+
+
+<%#= render("layouts/errors", :object => @stop) %>
+
+<%= form_for(@line.stops) do |f| %>
+  <div class="form-group">
+  <%= f.label :station_id %>
+  <%= f.text_field :station_id %>
+  <%= f.label :arrival %>
+  <%= f.text_field :arrival %>
+</div>
+
+<%= f.submit(:class => "btn btn-primary") %>
+<% end %>
+
+
+
+
+
+
+<p><%= link_to "Home", lines_path %></p>
+
