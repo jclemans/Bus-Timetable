@@ -12,14 +12,15 @@ class LinesController < ApplicationController
     @line = Line.new(params[:line])
     if @line.save
       flash[:notice] = "line: #{@line.name} created."
-      redirect_to lines_path
-    else
+      render 'show'
+        else
       render 'new'
     end
   end
 
   def show
     @line = Line.find(params[:id])
+    @stop = Stop.new(line_id: @line.id)
   end
 
   def update

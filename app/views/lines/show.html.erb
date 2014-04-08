@@ -6,26 +6,15 @@
                          :method => "delete",
                          :class => "btn btn-danger" %></p>
 
+<%#= render("layouts/errors", :object => @lines_station) %>
+<br>
 
-
-
-
-<%#= render("layouts/errors", :object => @stop) %>
-
-<%= form_for(@line.stops) do |f| %>
-  <div class="form-group">
-  <%= f.label :station_id %>
-  <%= f.text_field :station_id %>
-  <%= f.label :arrival %>
-  <%= f.text_field :arrival %>
-</div>
-
-<%= f.submit(:class => "btn btn-primary") %>
+<p>Assign a station to this route: </p>
+<%= form_for(@stop) do |f| %>
+  <%= f.hidden_field :line_id, :value => params[:id] %>
+  <%= f.collection_select :station_id, Station.all, :id, :name %>
+  <%= f.submit(:class => "btn btn-primary") %>
 <% end %>
-
-
-
-
 
 
 <p><%= link_to "Home", lines_path %></p>

@@ -2,22 +2,20 @@ class StopsController < ApplicationController
 
   def index
     @stops = Stop.all
-  end
-
-  def new
-    @stop = Stop.new
+    binding.pry
+    render()
   end
 
   def create
     @stop = Stop.new(params[:stop])
     if @stop.save
       flash[:notice] = "Stop saved."
-      redirect_to line_stops
     else
-      render line_path
+      flash[:notice] = "Stop not saved."
     end
+    redirect_to line_path(@stop.line_id)
   end
 
   def show
-    @stop = Stop.find(params[:id])
+    @stop = Stop.new
   end
